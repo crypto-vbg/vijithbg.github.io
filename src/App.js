@@ -104,7 +104,7 @@ const WorkExperienceCard = ({
 const workExperienceData = [
   {
     company: "Tvastr Cloud Pvt Ltd",
-    duration: "June 2023 - Present",
+    duration: "June 2023 - December 2023",
     position: "Artificial Intelligence Development Intern",
     responsibilities: [
       "Enhanced engineering with ChatGPT for swift and effective troubleshooting of Kubernetes issues.",
