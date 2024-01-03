@@ -25,7 +25,6 @@ const educationData = [
     institution: "PES University, Bengaluru, India",
     degree: "Bachelor of Technology in Computer Science and Engineering",
     graduationDate: "May 2024",
-    gpa: "8.37/10.00",
     coursework:
       "Natural Language Processing, Machine Intelligence, Data Analytics, Big Data",
     awards: "Distinction Award Certificate",
@@ -34,7 +33,6 @@ const educationData = [
     institution: "Expert Pre University College, Mangaluru, India",
     degree: "Higher Secondary Education",
     graduationDate: "May 2020",
-    gpa: "94.167%",
     coursework: "Physics, Chemistry, Mathematics, Biology",
     awards: "First Class with Distinction",
   },
@@ -44,7 +42,6 @@ const EducationCard = ({
   institution,
   degree,
   graduationDate,
-  gpa,
   coursework,
   awards,
 }) => (
@@ -52,8 +49,6 @@ const EducationCard = ({
     <h3>{institution}</h3>
     <p>
       {degree} | {graduationDate}
-      <br />
-      GPA/%: {gpa}
       <br />
       Coursework: {coursework}
       <br />
