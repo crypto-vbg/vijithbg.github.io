@@ -115,7 +115,7 @@ const workExperienceData = [
     duration: "Januray 2024 - present",
     position: "Graduate Intern",
     responsibilities: [
-      "Undergoing under the team"
+      "Undergoing training under the team"
       ],
     technologies:
       "Azure, Databricks",
