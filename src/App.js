@@ -110,6 +110,16 @@ const workExperienceData = [
     technologies:
       "Prompt Engineering, Python, Azure OpenAI services, Kubernetes",
   },
+  {
+    company: "GSK GCC",
+    duration: "Januray 2024 - present",
+    position: "Graduate Intern",
+    responsibilities: [
+      "Undergoing under the team"
+      ],
+    technologies:
+      "Azure, Databricks",
+  }
   // Add more entries if needed
 ];
 
