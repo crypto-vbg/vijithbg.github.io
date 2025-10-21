@@ -1,0 +1,48 @@
+/* Pulsing glow animation for central planet */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+    filter: blur(25px);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.central-planet {
+  position: relative;
+  box-shadow: 
+    0 0 40px rgba(168, 85, 247, 0.6),
+    0 0 80px rgba(168, 85, 247, 0.4),
+    0 0 120px rgba(168, 85, 247, 0.2);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .central-planet {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .central-planet > .relative {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .central-planet {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .central-planet > .relative {
+    font-size: 2.5rem;
+  }
+}

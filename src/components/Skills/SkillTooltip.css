@@ -1,0 +1,54 @@
+/* Tooltip styling */
+.skill-tooltip {
+  z-index: 9999;
+}
+
+.tooltip-content {
+  position: relative;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.3),
+    0 10px 40px rgba(0, 0, 0, 0.5);
+  min-width: 160px;
+}
+
+/* Tooltip arrow pointing down */
+.tooltip-arrow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 255, 255, 0.5);
+}
+
+.tooltip-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Progress circle animation */
+.progress-circle {
+  transition: stroke-dasharray 0.5s ease;
+}
+
+/* Glow effect on tooltip */
+.tooltip-content::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 0.5rem;
+  background: linear-gradient(45deg, #06b6d4, #a855f7);
+  opacity: 0.3;
+  filter: blur(10px);
+  z-index: -1;
+}

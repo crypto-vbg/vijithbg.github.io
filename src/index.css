@@ -1,0 +1,496 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Glassmorphism Utilities */
+  .glass-card {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    @apply bg-white/5 border border-white/10 rounded-xl;
+  }
+  
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/50;
+  }
+  
+  .glass-input {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    @apply bg-black/30 border border-white/20 rounded-lg text-white placeholder-white/40;
+  }
+  
+  .glass-input-focus {
+    @apply glass-input focus:border-cyan-400 focus:shadow-[0_0_15px_rgba(0,255,255,0.3)] outline-none;
+  }
+  
+  .glass-button {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    @apply bg-white/10 border border-white/20 rounded-lg transition-all duration-300;
+  }
+  
+  .glass-button-hover {
+    @apply glass-button hover:bg-white/20 hover:border-cyan-400 hover:shadow-glow-cyan;
+  }
+  
+  /* Section Spacing Utilities */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32 px-4 md:px-8 lg:px-12;
+  }
+  
+  .section-container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Typography Utilities */
+  .heading-primary {
+    @apply font-orbitron text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .heading-secondary {
+    @apply font-orbitron text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  .heading-tertiary {
+    @apply font-orbitron text-2xl md:text-3xl lg:text-4xl font-semibold;
+  }
+  
+  .text-body {
+    @apply font-rajdhani text-base md:text-lg leading-relaxed;
+  }
+  
+  /* Gradient Text Utilities */
+  .text-gradient-cyan-violet {
+    @apply bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-violet-cyan {
+    @apply bg-gradient-to-r from-violet-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+  
+  /* Glow Effect Utilities */
+  .glow-cyan {
+    @apply shadow-[0_0_20px_rgba(0,255,255,0.5)];
+  }
+  
+  .glow-cyan-lg {
+    @apply shadow-[0_0_30px_rgba(0,255,255,0.6)];
+  }
+  
+  .glow-violet {
+    @apply shadow-[0_0_20px_rgba(157,0,255,0.5)];
+  }
+  
+  .glow-violet-lg {
+    @apply shadow-[0_0_30px_rgba(157,0,255,0.6)];
+  }
+  
+  /* Button Utilities */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-glow-cyan-lg hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply glass-button-hover px-6 py-3 text-white font-semibold;
+  }
+}
+
+/* Hero Button Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4),
+                0 0 40px rgba(34, 211, 238, 0.2),
+                inset 0 0 20px rgba(34, 211, 238, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.6),
+                0 0 60px rgba(34, 211, 238, 0.3),
+                inset 0 0 30px rgba(34, 211, 238, 0.2);
+  }
+}
+
+.launch-button {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.launch-button:hover {
+  animation: pulseGlow 0.5s ease-in-out infinite;
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.8),
+              0 0 80px rgba(34, 211, 238, 0.4),
+              inset 0 0 40px rgba(34, 211, 238, 0.3);
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.launch-button:hover .button-glow {
+  opacity: 1;
+}
+
+/* Nebula Background Animations */
+@keyframes nebula {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.4;
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.35;
+  }
+}
+
+@keyframes nebula-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  33% {
+    transform: translate(-30px, 30px) scale(0.9);
+    opacity: 0.35;
+  }
+  66% {
+    transform: translate(20px, -20px) scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+.animate-nebula {
+  animation: nebula 20s ease-in-out infinite;
+}
+
+.animate-nebula-reverse {
+  animation: nebula-reverse 25s ease-in-out infinite;
+}
+
+/* Profile Image Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Orbiting Planets Animations */
+@keyframes orbit-0 {
+  from {
+    transform: rotate(0deg) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(0) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-1 {
+  from {
+    transform: rotate(0deg) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(0) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-2 {
+  from {
+    transform: rotate(0deg) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(0) rotate(-360deg);
+  }
+}
+
+@keyframes counter-rotate-0 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes counter-rotate-1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes counter-rotate-2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Shooting Star Animation */
+@keyframes shootingStar {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100vw, 100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(34, 211, 238, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.8),
+              0 0 40px rgba(34, 211, 238, 0.6),
+              0 0 60px rgba(34, 211, 238, 0.4);
+  animation: shootingStar 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 1);
+}
+
+/* Social Icons Pulsing Glow Animation */
+@keyframes pulseGlowSocial {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlowSocial 3s ease-in-out infinite;
+}
+
+/* Footer Rotating Icon Animation */
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate-slow {
+  animation: rotateSlow 20s linear infinite;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile for performance */
+  .animate-nebula,
+  .animate-nebula-reverse {
+    animation-duration: 30s;
+  }
+
+  /* Adjust scroll indicator size */
+  .scroll-indicator {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further reduce animations on small mobile */
+  .animate-pulse-slow {
+    animation-duration: 4s;
+  }
+
+  /* Optimize font rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Ensure touch targets are accessible */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & COLOR CONTRAST
+   ============================================ */
+
+/* Focus Indicators with Cyan Glow (WCAG 2.1 Compliant) */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.9);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.25),
+              0 0 20px rgba(0, 255, 255, 0.6);
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.9);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.25),
+              0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/* High Contrast Text for Accessibility (WCAG AA: 4.5:1 ratio) */
+.text-high-contrast {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure sufficient contrast on glassmorphism backgrounds */
+.glass-card .text-high-contrast,
+.glass-input .text-high-contrast {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Link contrast improvements */
+a {
+  color: #00FFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #33FFFF;
+  text-decoration: underline;
+}
+
+/* Button text contrast */
+button {
+  font-weight: 600;
+}
+
+/* Ensure form labels have sufficient contrast */
+label {
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.95), rgba(157, 0, 255, 0.95));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(34, 211, 238, 0.4);
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 20px;
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable specific animations */
+  .animate-pulse,
+  .animate-pulse-slow,
+  .animate-pulse-glow,
+  .animate-nebula,
+  .animate-nebula-reverse,
+  .animate-rotate-slow {
+    animation: none !important;
+  }
+
+  /* Keep essential transitions but make them instant */
+  button,
+  a,
+  input,
+  textarea {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,31 @@
+/* App styles - using Tailwind classes in components */
+
+/* Z-index layering system */
+/* 
+  Z-index hierarchy:
+  - 3D Canvas (StarfieldCanvas): z-0 (background layer)
+  - Main content sections: z-10 (UI layer)
+  - Navigation: z-50 (always on top)
+  - Mobile menu overlay: z-40 (below nav, above content)
+  - Shooting star: z-[9999] (special effects)
+  - Skip to content: z-[9999] (accessibility)
+*/
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pointer events configuration for layering */
+.App canvas {
+  pointer-events: none; /* Allow clicks to pass through 3D canvas */
+}
+
+.App main {
+  pointer-events: auto; /* Enable interactions with UI elements */
+}
+
+/* Section spacing and layout */
+section {
+  scroll-margin-top: 64px; /* Offset for fixed navigation */
+}

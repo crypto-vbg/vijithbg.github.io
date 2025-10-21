@@ -1,0 +1,146 @@
+/* Orbit ring styling */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Orbiting skill container */
+.orbiting-skill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
+  transform-origin: 0 0;
+  z-index: 10;
+  pointer-events: auto;
+  /* Apply initial rotation based on start angle */
+  transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle)));
+  animation: orbit var(--orbit-duration) linear infinite;
+}
+
+/* Orbit animation - moves in circular path */
+@keyframes orbit {
+  from {
+    transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle)));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle) - 360deg));
+  }
+}
+
+/* Skill icon wrapper - ensures icon stays upright */
+.skill-icon-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 211, 238, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(34, 211, 238, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 25px rgba(34, 211, 238, 0.4),
+    inset 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+.skill-icon-wrapper:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.5),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.skill-icon {
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .orbiting-skill {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+  }
+
+  .skill-icon {
+    font-size: 2rem;
+  }
+
+  /* Reduce orbit radii on mobile */
+  .orbiting-skill[style*="--orbit-radius: 250px"] {
+    --orbit-radius: 150px !important;
+  }
+
+  .orbiting-skill[style*="--orbit-radius: 300px"] {
+    --orbit-radius: 180px !important;
+  }
+
+  .orbiting-skill[style*="--orbit-radius: 350px"] {
+    --orbit-radius: 210px !important;
+  }
+
+  .orbit-ring:nth-child(1) {
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .orbit-ring:nth-child(2) {
+    width: 360px !important;
+    height: 360px !important;
+  }
+
+  .orbit-ring:nth-child(3) {
+    width: 420px !important;
+    height: 420px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbiting-skill {
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+  }
+
+  .skill-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Further reduce orbit radii on small mobile */
+  .orbiting-skill[style*="--orbit-radius: 250px"] {
+    --orbit-radius: 120px !important;
+  }
+
+  .orbiting-skill[style*="--orbit-radius: 300px"] {
+    --orbit-radius: 145px !important;
+  }
+
+  .orbiting-skill[style*="--orbit-radius: 350px"] {
+    --orbit-radius: 170px !important;
+  }
+
+  .orbit-ring:nth-child(1) {
+    width: 240px !important;
+    height: 240px !important;
+  }
+
+  .orbit-ring:nth-child(2) {
+    width: 290px !important;
+    height: 290px !important;
+  }
+
+  .orbit-ring:nth-child(3) {
+    width: 340px !important;
+    height: 340px !important;
+  }
+}
