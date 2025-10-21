@@ -46,12 +46,12 @@ const Starfield = ({ mousePosition = { x: 0.5, y: 0.5 }, scrollProgress = 0 }) =
     }
 
     return { positions, colors, sizes };
-  }, []);
+  }, [particleCount]);
 
   // Store original positions for parallax calculations
   const originalPositions = useMemo(() => {
     return new Float32Array(positions);
-  }, [positions, particleCount]);
+  }, [positions]);
 
   // Smooth interpolation helper (lerp)
   const lerp = (start, end, factor) => {
