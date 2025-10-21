@@ -53,7 +53,7 @@ const StarfieldCanvas = ({ mousePosition, scrollProgress }) => {
       disableParallax,
       initialFPS: fps
     });
-  }, []);
+  }, [adaptiveQuality, disableParallax, fps]);
 
   return (
     <div 

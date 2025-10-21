@@ -402,7 +402,7 @@ export const publications = [
 // ============================================
 // EXPORT ALL
 // ============================================
-export default {
+const portfolioConfig = {
   personalInfo,
   socialLinks,
   skills,
@@ -413,3 +413,5 @@ export default {
   achievements,
   publications
 };
+
+export default portfolioConfig;

@@ -51,7 +51,7 @@ const Starfield = ({ mousePosition = { x: 0.5, y: 0.5 }, scrollProgress = 0 }) =
   // Store original positions for parallax calculations
   const originalPositions = useMemo(() => {
     return new Float32Array(positions);
-  }, [positions]);
+  }, [positions, particleCount]);
 
   // Smooth interpolation helper (lerp)
   const lerp = (start, end, factor) => {
