@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/vijithbg.github.io/static/css/main.e6c13ad2.css",
-    "main.js": "/vijithbg.github.io/static/js/main.bcbbed89.js",
+    "main.js": "/vijithbg.github.io/static/js/main.390ecafa.js",
     "static/js/453.c87345bd.chunk.js": "/vijithbg.github.io/static/js/453.c87345bd.chunk.js",
     "static/media/profilepic.jpg": "/vijithbg.github.io/static/media/profilepic.7395f7289b8032a9b7f7.jpg",
     "index.html": "/vijithbg.github.io/index.html",
     "main.e6c13ad2.css.map": "/vijithbg.github.io/static/css/main.e6c13ad2.css.map",
-    "main.bcbbed89.js.map": "/vijithbg.github.io/static/js/main.bcbbed89.js.map",
+    "main.390ecafa.js.map": "/vijithbg.github.io/static/js/main.390ecafa.js.map",
     "453.c87345bd.chunk.js.map": "/vijithbg.github.io/static/js/453.c87345bd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.bcbbed89.js"
+    "static/js/main.390ecafa.js"
   ]
 }
